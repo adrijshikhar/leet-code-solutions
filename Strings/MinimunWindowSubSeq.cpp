@@ -50,6 +50,34 @@ string mws(string A, string B) {
   return ans;
 }
 
+string mws2(string s, string t) {
+  int si = 0, ti = 0;
+  string rt = s + "123";
+  while (si < s.size()) {
+    if (s[si] == t[ti]) {
+      if (ti == t.size() - 1) {
+        int end = si;
+        while (ti >= 0) {
+          while (s[si] != t[ti]) {
+            si--;
+          }
+          ti--;
+          si--;
+        }
+
+        si++;
+        if (rt.size() > end - si + 1) {
+          rt = s.substr(si, end + 1);
+        }
+      }
+      ti++;
+    }
+
+    si++;
+  }
+
+  return rt == (s + "123") ? "" : rt;
+}
 int main() {
   string v1 = "abcdebdde";
   string v3 = "bded";
