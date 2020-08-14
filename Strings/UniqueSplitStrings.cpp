@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int wiggleSort(string A) {
+int uniqueSplitStrings(string A) {
   unordered_map<int, int> mp1, mp2;
   int n = A.size(), ans = 0;
   for (int i = 0; i < n; i++) {
@@ -21,7 +21,7 @@ int wiggleSort(string A) {
 
 int main() {
   string v1 = "ababa";
-  int v2 = wiggleSort(v1);
+  int v2 = uniqueSplitStrings(v1);
   cout << v2 << " ";
 
   return 0;
