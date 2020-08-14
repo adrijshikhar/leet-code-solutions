@@ -15,7 +15,7 @@ class Solution {
   }
 
   public int shortestDistance(final int[][] grid) {
-     final int m = grid.length;
+    final int m = grid.length;
     final int n = grid[0].length;
     final int[][] dist = new int[m][n];
     final int[][] counter = new int[m][n];
