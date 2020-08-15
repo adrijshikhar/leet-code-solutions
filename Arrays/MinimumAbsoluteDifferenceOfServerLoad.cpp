@@ -22,30 +22,25 @@ We can distribute the processes with loads [1, 2, 4] to the first server and [3,
 and the difference of their loads will be equal to 1.
 */
 
-int minimunAmplitude(vector<int> &A) {
+int minAbsload(vector<int> &A) {
   sort(A.begin(), A.end());
-  int start, end, n = A.size(), amp = A[n - 1] - A[0], k = 4, d;
-  start = 3;
-  end = n - 1;
-  for (int i = 0; i < n; i++) {
-    cout << A[i] << " ";
+  int ans, s1 = 0, s2 = 0, n = A.size(), d1, d2;
+  s1 = A[n - 1];
+  for (int i = n - 2; i >= 0; i--) {
+    d1 = abs(s1 + A[i] - s2);
+    d2 = abs(s1 - A[i] - s2);
+    if (d1 < d2)
+      s1 += A[i];
+    else
+      s2 += A[i];
   }
-  cout << endl;
-  while (k--) {
-    d = A[end] - A[start];
-    amp = min(amp, d);
-    start--;
-    end--;
-  }
-
-  return amp;
+  ans = abs(s1 - s2);
+  return ans;
 }
 
 int main() {
-  vector<int> v1{
-      1, 1, 3, 5, 8, 8,
-  };
-  int v2 = minimunAmplitude(v1);
+  vector<int> v1{1, 2, 3, 4, 6};
+  int v2 = minAbsload(v1);
   cout << v2 << " ";
 
   return 0;
